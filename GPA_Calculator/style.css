@@ -1,0 +1,413 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 20px;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.semester {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    position: relative;
+}
+
+.semester-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.semester-header label {
+    font-size: 1.2em;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.semester-header input[type="text"].semester-name-input {
+    flex-grow: 1;
+    min-width: 150px;
+    font-size: 1.2em;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.semester-header input[type="number"].semester-gpa-override,
+.semester-header input[type="number"].total-courses-override {
+    width: 80px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.semester-header input[type="number"]::-webkit-outer-spin-button,
+.semester-header input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.semester-header .remove-semester-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.semester-header .remove-semester-btn:hover {
+    background-color: #c0392b;
+}
+
+.total-courses-display-span {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-left: 5px;
+    white-space: nowrap;
+    display: none;
+}
+
+.course-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.course-input-group label {
+    margin-right: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.course-input-group input[type="text"] {
+    flex-grow: 1;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.course-input-group input[type="number"] {
+    width: 70px;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.course-input-group input[type="number"]::-webkit-outer-spin-button,
+.course-input-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.course-input-group .remove-course-btn {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.2s;
+    font-size: 0.8em;
+}
+
+.course-input-group .remove-course-btn:hover {
+    background-color: #7f8c8d;
+}
+
+.course-input-group.highlight-error input {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.course-input-group.locked input {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    border-color: #ddd;
+}
+
+.course-input-group.locked .remove-course-btn {
+    display: none;
+}
+
+.lock-icon {
+    margin-left: 5px;
+    color: #888;
+    font-size: 0.9em;
+    vertical-align: middle;
+    display: none;
+}
+
+.course-input-group.locked .lock-icon {
+    display: inline-block;
+}
+
+.semester-results {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #e0e0e0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #2980b9;
+    text-align: right;
+}
+
+.semester-results span {
+    color: #27ae60;
+}
+
+.action-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 25px;
+    margin-right: 15px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.action-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    transform: translateY(0);
+}
+
+.reset-button {
+    background-color: #f39c12;
+}
+
+.reset-button:hover {
+    background-color: #e67e22;
+}
+
+.add-course-btn {
+    background-color: #2ecc71;
+    margin-top: 15px;
+    padding: 8px 15px;
+    font-size: 0.95em;
+    border-radius: 5px;
+}
+
+.add-course-btn:hover {
+    background-color: #27ae60;
+}
+
+.total-cgpa-display {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    border: 2px solid #bdc3c7;
+}
+
+.total-cgpa-display h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.8em;
+}
+
+#overallCGPA {
+    color: #27ae60;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.custom-alert-overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom-alert-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-alert-overlay.visible .custom-alert-box {
+    transform: scale(1);
+}
+
+.custom-alert-box p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.custom-alert-box button.action-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.1s;
+    min-width: 100px;
+}
+
+.custom-alert-box button.action-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.custom-alert-box button.action-button:active {
+    transform: translateY(0);
+}
+
+.highlight-error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.credit {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+    line-height: 1.4;
+    z-index: 999;
+}
+
+.credit a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.credit a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .semester-header label,
+    .semester-header input[type="text"].semester-name-input,
+    .semester-header input[type="number"].semester-gpa-override,
+    .semester-header input[type="number"].total-courses-override,
+    .semester-header .remove-semester-btn {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+    .total-courses-display-span {
+        flex-basis: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .course-input-group {
+        flex-wrap: wrap;
+    }
+
+    .course-input-group label,
+    .course-input-group input[type="text"],
+    .course-input-group input[type="number"] {
+        margin-bottom: 8px;
+    }
+
+    .course-input-group input[type="text"] {
+        flex-basis: 100%;
+    }
+
+    .course-input-group input[type="number"] {
+        flex-basis: 50px;
+        margin-right: 0;
+    }
+
+    .course-input-group .remove-course-btn {
+        margin-left: auto;
+        order: 1;
+    }
+
+    .action-button {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
